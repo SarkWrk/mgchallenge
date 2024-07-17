@@ -7,7 +7,7 @@ This code runs a basic Ceaser Chiper ([link to Wikipedia](https://en.wikipedia.o
 # How do I use it?
 
 ## Setup
-The program is coded in Python. So, if not already installed, download the newest version of Python from the Microsoft Store or [the Python Software Foundation's official site](https://www.python.org/downloads/).
+The program is coded in Python. So, if not already installed, download the newest version of Python from the Microsoft Store or from [the Python Software Foundation's official site](https://www.python.org/downloads/).
 After installing Python, download the code, or create your own Python file with the code.
 
 ## Running the code
