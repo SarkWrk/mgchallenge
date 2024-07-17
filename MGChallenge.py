@@ -2,7 +2,7 @@
 import random
 import time
 
-userInputforDorE = input("Are you decoding a file/text or encoding text? (d = decode, e = encode)\n")
+userInputforDorE = input("Are you decoding a file/text or encoding text?\n")
 sepperator = input("\nWhat do you want to use as a seperator between text decoding: (the longer it is the less likely\n " +
                    " to be confused with actual text, make sure to use the same sepperator when decoding and\n " +
                    " encoding(default is |+|-))\n")
@@ -11,7 +11,7 @@ decoder = 0
 
 if sepperator == "":
     sepperator = "|+|-"
-if userInputforDorE.casefold() == "e":
+if userInputforDorE.casefold() == ("ecode" or "e"):
     print("Alright, encoding!")
     time.sleep(1)
 
@@ -29,7 +29,7 @@ if userInputforDorE.casefold() == "e":
 
     createfile = input("\nDo you want to create a file with this information? (y/n)\n")
 
-    if createfile.casefold() == "y":
+    if createfile.casefold() == ("yes" or "y"):
         try:
             f = open("EncodedText.txt", "x")
             x = open("EncodedText.txt", "w")
@@ -40,7 +40,7 @@ if userInputforDorE.casefold() == "e":
         except:
             print("\nUnable to create file! This is most likely due to a file with this name already created.")
             shouldoverride = input("\nDo you want to override the information in 'EncodedText.txt'? (y/n)\n")
-            if shouldoverride == "y":
+            if shouldoverride == ("yes" or "y"):
                 print("Overriding contents with encoded text.")
                 try:
                     x = open("EncodedText.txt", "w")
@@ -55,7 +55,7 @@ if userInputforDorE.casefold() == "e":
 
     print("Finished!")
 
-elif userInputforDorE.casefold() == "d":
+elif userInputforDorE.casefold() == ("decode" or "d"):
     print("Alright, decoding!")
     time.sleep(1)
 
@@ -64,7 +64,7 @@ elif userInputforDorE.casefold() == "d":
         text = Enc.read()
         Enc.close()
         confirm = input("\nIs \n" + str(text) + "\n what you are trying to decode? (y/n) \n")
-        if confirm.casefold() == "y":
+        if confirm.casefold() == ("yes" or "y"):
             print("Okay!")
         else:
             text = input("\nWhat is the text you want to decode: \n")
