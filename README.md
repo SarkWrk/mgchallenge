@@ -2,7 +2,7 @@
 This is code that I created due to something Mgloven said. I don't remember when, but it was in [Ice](https://discord.com/channels/@me/759616929085784065).
 
 # What does the code do?
-This code runs a basic Ceaser Chiper ([link to Wikipedia](https://en.wikipedia.org/wiki/Caesar_cipher)) by changing the Unicode code by a predictable value.
+This code runs a basic Ceaser Chiper ([link to Wikipedia](https://en.wikipedia.org/wiki/Caesar_cipher)) by changing the Unicode character code by a predictable value.
 
 # How do I use it?
 
