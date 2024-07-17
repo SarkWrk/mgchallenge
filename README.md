@@ -11,6 +11,8 @@ The program is coded in Python. So, if not already installed, download the newes
 After installing Python, download the code, or create your own Python file with the code.
 
 ## Running the code
+You can run the code in your favourite IDE of choice, or through the terminal.
+
 When running the code you are given the question `Are you decoding a file/text or encoding text? (d = decode, e = encode)`. You **must** answer using either `d` or `e` (case inspecific).
 ### Encoding
 After responding, if you responded with wanting to encode (if you want to decode, see the next section): the program will ask you for a seperator (used so that the program can later decode the text). When decoding the *same* seperator must be used.
