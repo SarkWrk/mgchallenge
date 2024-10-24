@@ -11,7 +11,7 @@ decoder = 0
 
 if sepperator == "":
     sepperator = "|+|-"
-if userInputforDorE.casefold() == "ecode" or "e":
+if userInputforDorE.casefold() == "ecode" or userInputforDorE.casefold() == "e":
     print("Alright, encoding!")
     time.sleep(1)
 
@@ -55,7 +55,7 @@ if userInputforDorE.casefold() == "ecode" or "e":
 
     print("Finished!")
 
-elif userInputforDorE.casefold() == "decode" or "d":
+elif userInputforDorE.casefold() == "decode" or userInputforDorE.casefold() == "d":
     print("Alright, decoding!")
     time.sleep(1)
 
