@@ -1,76 +1,72 @@
-#The following code will be a bad example of an encoding/decoding machine
+#The following code will be a bad example of an encodedTextFromFileoding/decoding machine
 
-import random
-import time
-import os
+import random # Get a random number for encoding
+import os # Used for getting the path for creating EncodedText.txt
 
-hasdecoderfailed = True
-file_parent = os.path.dirname(__file__)
-encoded_path = os.path.join(file_parent, "EncodedText.txt")
-print(encoded_path)
+hasProgramSucceeded = False
+fileDirectory = os.path.dirname(__file__) # Gets file directory
+encodedTextPath = os.path.join(fileDirectory, "encodedText.txt") # Absolute path for encodedText.txt
 
 print("Tip: Press ctrl + c to hard-exit this program.")
 
 def main():
-    userInputforDorE = input("Are you decoding a file/text or encoding text?\n")
-    sepperator = input("\nWhat do you want to use as a seperator between text decoding: (default is |+|-))\n")
-    global hasdecoderfailed
-    hasdecoderfailed = False
+    userInputForDecodeOrEncode = input("Are you decoding a file/text or encode text?\n")
+    separator = input("\nWhat do you want to use as a seperator between text decoding: (default is |+|-))\n")
+    global hasProgramSucceeded
+    hasProgramSucceeded = True
     decoder = 0
 
-    if sepperator == "":
-        sepperator = "|+|-"
-    if userInputforDorE.casefold() == "encode" or userInputforDorE == "e":
+    if separator == "":
+        separator = "|+|-"
+    if userInputForDecodeOrEncode.casefold() == "encode" or userInputForDecodeOrEncode == "e":
         print("Alright, encoding!")
-        time.sleep(1)
 
-        encint = random.randint(1, 100)
+        encodeInt = random.randint(1, 100)
 
         text = input("\nWhat is the text you are trying to encode?\n")
-        encodedtext = ""
+        encodedText = ""
 
-        encodedtext = encodedtext + str(encint) + sepperator
+        encodedText = encodedText + str(encodeInt) + separator
 
         for i in text:
-            enclet = chr(ord(i) + encint)
-            encodedtext = encodedtext + enclet
-        print("\nFinal outcome:\n" + str(encodedtext))
+            encodedLetter = chr(ord(i) + encodeInt)
+            encodedText = encodedText + encodedLetter
+        print("\nFinal outcome:\n" + str(encodedText))
 
-        createfile = input("\nDo you want to create a file with this information? (y/n)\n")
+        createFile = input("\nDo you want to create a file with this information? (y/n)\n")
 
-        if createfile.casefold() == "yes" or createfile.casefold() == "y":
+        if createFile.casefold() == "yes" or createFile.casefold() == "y":
             try:
-                f = open(encoded_path, "x", encoding="utf-16")
-                f.write(encodedtext)
+                f = open(encodedTextPath, "x", encoding="utf-16")
+                f.write(encodedText)
                 f.close()
             except:
                 print("\nUnable to create file! This is most likely due to a file with this name already created.")
-                shouldoverride = input("\nDo you want to override the information in 'EncodedText.txt'? (y/n)\n")
-                if shouldoverride == "yes" or shouldoverride.casefold() == "y":
-                    print("Overriding contents with encoded text.")
+                shouldOverrideFile = input("\nDo you want to override the information in 'encodedText.txt'? (y/n)\n")
+                if shouldOverrideFile == "yes" or shouldOverrideFile.casefold() == "y":
+                    print("Overriding contents with encodedTextFromFileoded text.")
                     try:
-                        x = open(encoded_path, "w", encoding="utf-16")
-                        x.write(encodedtext)
+                        x = open(encodedTextPath, "w", encoding="utf-16")
+                        x.write(encodedText)
                         x.close()
                     except:
                         print("\nCould not override file. Please copy the text if you're saving it instead please.\n")
-                        print(encodedtext)
+                        print(encodedText)
                         print("\n")
                 else:
                     print("Will not override")
 
         print("Finished!")
 
-    elif userInputforDorE.casefold() == "decode" or userInputforDorE == "d":
+    elif userInputForDecodeOrEncode.casefold() == "decode" or userInputForDecodeOrEncode == "d":
         print("Alright, decoding!")
-        time.sleep(1)
 
         try:
-            Enc = open(encoded_path, "r", encoding="utf-16")
-            text = Enc.read()
-            Enc.close()
-            confirm = input("\nIs \n\" " + str(text) + " \"\n what you are trying to decode? (y/n) \n")
-            if confirm.casefold() == "yes" or confirm.casefold() == "y":
+            encodedTextFromFile = open(encodedTextPath, "r", encodedTextFromFileoding="utf-16")
+            text = encodedTextFromFile.read()
+            encodedTextFromFile.close()
+            confirmCorrectText = input("\nIs \n\" " + str(text) + " \"\n what you are trying to decode? (y/n) \n")
+            if confirmCorrectText.casefold() == "yes" or confirmCorrectText.casefold() == "y":
                 print("Okay!")
             else:
                 text = input("\nWhat is the text you want to decode:\n")
@@ -78,33 +74,28 @@ def main():
             print("Can't find file.\n Do you have a text that you can input instead?")
             text = input("\nText:\n")
 
-        splittext = text.split(sepperator)
+        splitEncodedText = text.split(separator)
 
-        if splittext[0].isnumeric() == True:
-            decoder = int(splittext[0])
+        if splitEncodedText[0].isnumeric() == True:
+            decoder = int(splitEncodedText[0])
+
+            removeText = text.replace(str(decoder) + separator, "")
+
+            decodedText = ""
+
+            for i in removeText:
+                decodedLetter = chr(ord(i) - decoder)
+                decodedText = decodedText + decodedLetter
+
+            print("\nThe text was:\n" + str(decodedText))
         else:
-            print("The seperator you gave does not align with the seperator you used to encode.")
-            print("This program is going to restart in 3s")
-            time.sleep(3)
-            hasdecoderfailed = True
+            print("The seperator you gave does not align with the seperator you used to encodedTextFromFileode.")
+            hasProgramSucceeded = False
 
-        if hasdecoderfailed == False:
-            removedtext = text.replace(str(decoder) + sepperator, "")
-
-            dectext = ""
-
-            for i in removedtext:
-                declet = chr(ord(i) - decoder)
-                dectext = dectext + declet
-
-            print("\nThe text was:\n" + str(dectext))
-        else:
-            hasdecoderfailed = True
-    else:
-        print("Not a valid input")
-
-while hasdecoderfailed == True:
+while hasProgramSucceeded == False:
     main()
+
+import time
 
 print("\nYou may exit this program at any time. It will automatically close after 30s.")
 time.sleep(30)
