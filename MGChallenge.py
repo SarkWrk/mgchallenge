@@ -1,8 +1,13 @@
 #The following code will be a bad example of an encoding/decoding machine
+
 import random
 import time
+import os
 
 hasdecoderfailed = True
+file_parent = os.path.dirname(__file__)
+encoded_path = os.path.join(file_parent, "EncodedText.txt")
+print(encoded_path)
 
 print("Tip: Press ctrl + c to hard-exit this program.")
 
@@ -35,10 +40,8 @@ def main():
 
         if createfile.casefold() == "yes" or createfile.casefold() == "y":
             try:
-                f = open("EncodedText.txt", "x")
-                x = open("EncodedText.txt", "w")
-                x.write(encodedtext)
-                x.close()
+                f = open(encoded_path, "x", encoding="utf-16")
+                f.write(encodedtext)
                 f.close()
             except:
                 print("\nUnable to create file! This is most likely due to a file with this name already created.")
@@ -46,7 +49,7 @@ def main():
                 if shouldoverride == "yes" or shouldoverride.casefold() == "y":
                     print("Overriding contents with encoded text.")
                     try:
-                        x = open("EncodedText.txt", "w")
+                        x = open(encoded_path, "w", encoding="utf-16")
                         x.write(encodedtext)
                         x.close()
                     except:
@@ -63,7 +66,7 @@ def main():
         time.sleep(1)
 
         try:
-            Enc = open("EncodedText.txt", "r")
+            Enc = open(encoded_path, "r", encoding="utf-16")
             text = Enc.read()
             Enc.close()
             confirm = input("\nIs \n\" " + str(text) + " \"\n what you are trying to decode? (y/n) \n")
@@ -83,6 +86,7 @@ def main():
             print("The seperator you gave does not align with the seperator you used to encode.")
             print("This program is going to restart in 3s")
             time.sleep(3)
+            hasdecoderfailed = True
 
         if hasdecoderfailed == False:
             removedtext = text.replace(str(decoder) + sepperator, "")
