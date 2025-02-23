@@ -44,7 +44,7 @@ def main():
                 print("\nUnable to create file! This is most likely due to a file with this name already created.")
                 shouldOverrideFile = input("\nDo you want to override the information in 'encodedText.txt'? (y/n)\n")
                 if shouldOverrideFile == "yes" or shouldOverrideFile.casefold() == "y":
-                    print("Overriding contents with encodedTextFromFileoded text.")
+                    print("Overriding contents with encoded text.")
                     try:
                         x = open(encodedTextPath, "w", encoding="utf-16")
                         x.write(encodedText)
@@ -89,7 +89,7 @@ def main():
 
             print("\nThe text was:\n" + str(decodedText))
         else:
-            print("The seperator you gave does not align with the seperator you used to encodedTextFromFileode.")
+            print("The seperator you gave does not align with the seperator you used to encode.")
             hasProgramSucceeded = False
 
 while hasProgramSucceeded == False:
